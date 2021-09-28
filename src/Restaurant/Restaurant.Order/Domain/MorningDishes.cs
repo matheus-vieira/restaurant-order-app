@@ -12,5 +12,7 @@ namespace Restaurant.Order.Domain
             [2] = "toast",
             [3] = "coffee",
         };
+
+        protected override IList<int> AllowedMultiples => new List<int> { 3 };
     }
 }

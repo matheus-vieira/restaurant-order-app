@@ -4,6 +4,7 @@ namespace Restaurant.Order.Domain
 {
     public abstract class DishesBase : IDishes
     {
+        protected virtual IList<int> AllowedMultiples { get; }
         protected virtual IDictionary<int, string> DishDictionary { get; }
 
         public string[] GetDishes(int[] dishesTypes)
@@ -21,13 +22,25 @@ namespace Restaurant.Order.Domain
             foreach (var item in dishes)
             {
                 DishDictionary.TryGetValue(item.Key, out var value);
+
+                if (item.Value > 1 && !CanHaveMultiples(item.Key))
+                    continue;
+
+                if (item.Value == 0) continue;
+
                 var text = value ?? "error";
+
                 if (item.Value > 1)
                     text += $"(x{item.Value})";
                 list.Add(text);
             }
 
             return list.ToArray();
+        }
+
+        private bool CanHaveMultiples(int dishType)
+        {
+            return AllowedMultiples.Contains(dishType);
         }
 
         private SortedDictionary<int, int> LoadDishes(int[] dishesTypes)
@@ -39,7 +52,6 @@ namespace Restaurant.Order.Domain
                 DishDictionary.TryGetValue(dishesTypes[i], out var dishName);
 
                 dishes.TryGetValue(dishesTypes[i], out var value);
-                
 
                 dishes[dishesTypes[i]] = ++value;
             }
