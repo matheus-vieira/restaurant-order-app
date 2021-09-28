@@ -1,43 +1,26 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Restaurant.Order.Domain;
+using System;
 
 namespace Restaurant.Order.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class OrdersController : ControllerBase
+    public partial class OrdersController : ControllerBase
     {
-        /// <summary>
-        /// Get dishes for each time of day
-        /// </summary>
-        /// <param name="timeofday">Time of the day, should be morning or night</param>
-        /// <param name="dyshType">The requested dishes</param>
-        /// <returns></returns>
-        /// <response code="200">OK</response>
-        /// <response code="400">Bad Request</response>
-        /// <response code="403">Forbidden</response>
-        /// <response code="404">Not found</response>
-        /// <response code="500">Internal Server Error</response>
-        [HttpPost, Route("morning/")]
-        public IActionResult GetMorning([FromBody] int[] dyshType)
+        private readonly Func<string, IDishes> _serviceResolver;
+
+        public OrdersController(
+            Func<string, IDishes> serviceResolver)
         {
-            return Ok(new[] { "morning fine" });
+            _serviceResolver = serviceResolver;
         }
 
-        /// <summary>
-        /// Get dishes for each time of day
-        /// </summary>
-        /// <param name="timeofday">Time of the day, should be morning or night</param>
-        /// <param name="dyshType">The requested dishes</param>
-        /// <returns></returns>
-        /// <response code="200">OK</response>
-        /// <response code="400">Bad Request</response>
-        /// <response code="403">Forbidden</response>
-        /// <response code="404">Not found</response>
-        /// <response code="500">Internal Server Error</response>
-        [HttpPost, Route("night/")]
-        public IActionResult GetNight([FromBody] int[] dyshType)
+        private IActionResult InternalGetDishes(string type, int[] dyshType)
         {
-            return Ok(new[] { "night fine" });
+            var service = _serviceResolver(type);
+            var list = service?.GetDishes(dyshType);
+            return Ok(list);
         }
     }
 }
