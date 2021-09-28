@@ -15,12 +15,13 @@ namespace Restaurant.Order.Domain
             return list;
         }
 
-        private static string[] BuildDishes(IReadOnlyDictionary<string, int> dishes)
+        private string[] BuildDishes(SortedDictionary<int, int> dishes)
         {
             List<string> list = new();
             foreach (var item in dishes)
             {
-                var text = item.Key;
+                DishDictionary.TryGetValue(item.Key, out var value);
+                var text = value ?? "error";
                 if (item.Value > 1)
                     text += $"(x{item.Value})";
                 list.Add(text);
@@ -29,18 +30,18 @@ namespace Restaurant.Order.Domain
             return list.ToArray();
         }
 
-        private IReadOnlyDictionary<string, int> LoadDishes(int[] dishesTypes)
+        private SortedDictionary<int, int> LoadDishes(int[] dishesTypes)
         {
-            Dictionary<string, int> dishes = new();
+            SortedDictionary<int, int> dishes = new();
 
             for (int i = 0; i < dishesTypes.Length; i++)
             {
                 DishDictionary.TryGetValue(dishesTypes[i], out var dishName);
 
-                var key = dishName ?? "error";
-                dishes.TryGetValue(key, out int value);
+                dishes.TryGetValue(dishesTypes[i], out var value);
+                
 
-                dishes[key] = ++value;
+                dishes[dishesTypes[i]] = ++value;
             }
 
             return dishes;
