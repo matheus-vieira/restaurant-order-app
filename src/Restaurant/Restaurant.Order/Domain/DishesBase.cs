@@ -26,8 +26,6 @@ namespace Restaurant.Order.Domain
                 if (item.Value > 1 && !CanHaveMultiples(item.Key))
                     continue;
 
-                if (item.Value == 0) continue;
-
                 var text = value ?? "error";
 
                 if (item.Value > 1)
