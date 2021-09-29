@@ -1,4 +1,5 @@
 [![.NET](https://github.com/matheus-vieira/restaurant-order-app/actions/workflows/dotnet.yml/badge.svg)](https://github.com/matheus-vieira/restaurant-order-app/actions/workflows/dotnet.yml)
+[![Build](https://github.com/matheus-vieira/restaurant-order-app/actions/workflows/build.yml/badge.svg)](https://github.com/matheus-vieira/restaurant-order-app/actions/workflows/build.yml)
 
 # Restaurant Order App (technical test)
 
