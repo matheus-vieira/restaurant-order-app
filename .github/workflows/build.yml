@@ -41,8 +41,8 @@ jobs:
           dotnet test .\src\Restaurant --logger trx --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=.\coverage.\ --settings coverlet.runsettings
       - name: Run Reportgenerator
         run: |
-          dotnet tool install dotnet-reportgenerator-globaltool --tool-path . 
-        ./reportgenerator "-reports:$(Build.SourcesDirectory)/coverage/coverage.opencover.xml" "-targetdir:coverage/Cobertura" "-reporttypes:Cobertura;HTMLInline;HTMLChart"
+          dotnet tool install dotnet-reportgenerator-globaltool --tool-path .
+          ./reportgenerator "-reports:$(Build.SourcesDirectory)/coverage/coverage.opencover.xml" "-targetdir:coverage/Cobertura" "-reporttypes:Cobertura;HTMLInline;HTMLChart"
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
