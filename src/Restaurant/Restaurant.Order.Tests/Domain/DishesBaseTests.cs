@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Restaurant.Order.Tests.Domain
 {
-    public class DishesBaseTests
+    public abstract class DishesBaseTests
     {
         protected readonly IDishes _service;
 
