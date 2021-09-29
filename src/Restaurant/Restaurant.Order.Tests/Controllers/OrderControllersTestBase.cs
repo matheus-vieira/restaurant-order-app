@@ -12,7 +12,7 @@ namespace Restaurant.Order.Tests.Controllers
     {
         private readonly AutoMocker _mocker;
         private readonly IDishes _service;
-        private readonly OrdersController _controller;
+        protected readonly OrdersController _controller;
         private readonly Func<string, IDishes> _serviceResolver;
 
         public OrderControllersTestBase(IDishes service)
@@ -27,7 +27,7 @@ namespace Restaurant.Order.Tests.Controllers
         protected void CheckPossibilities(int[] dishTypes, string[] expected)
         {
             // act
-            var actionResult = _controller.GetMorning(dishTypes) as OkObjectResult; ;
+            var actionResult = _controller.GetMorning(dishTypes) as OkObjectResult;
 
             // assert
             Assert.IsNotNull(actionResult);
