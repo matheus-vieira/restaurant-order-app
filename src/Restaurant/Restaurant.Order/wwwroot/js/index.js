@@ -1,5 +1,4 @@
-﻿
-(function (w, d) {
+﻿(function (w, d) {
     "use strict";
 
     function getDomElements() {
@@ -12,7 +11,7 @@
             const output = await execute(input.replace(/\s/g, ''));
             outputDishes.value = output;
         }, true);
-    };
+    }
 
     function validateInput(input) {
         if (!input) return "";
@@ -23,18 +22,18 @@
     const validTimeOfDayValues = ["morning", "night"];
     function validateTimeOfDay(timeOfDay) {
         if (typeof timeOfDay !== 'string')
-            throw `The first element on input should be equals to "${validTimeOfDayValues.join(" or ")}"`;
+            throw new Error(`The first element on input should be equals to "${validTimeOfDayValues.join(" or ")}"`);
 
         const isValidTimeOfDay = validTimeOfDayValues.filter(v => v.toLowerCase() == timeOfDay.toLowerCase());
 
         if (isValidTimeOfDay && isValidTimeOfDay.length === 0)
-            throw `The first element on input should be equals to "${validTimeOfDayValues.join(" or ")}"`;
+            throw new Error(`The first element on input should be equals to "${validTimeOfDayValues.join(" or ")}"`);
     }
 
     function validateValues(values) {
         const containsNan = values.filter(v => isNaN(v));
         if (containsNan && containsNan.length !== 0)
-            throw `After "${validTimeOfDayValues.join(" or ")}" should contain only numbers`;
+            throw new Error(`After "${validTimeOfDayValues.join(" or ")}" should contain only numbers`);
     }
 
     async function getDishes(input) {
@@ -47,8 +46,8 @@
         };
 
         const response = await fetch(url, options);
-        const dishes = await response.json();
-        return dishes;
+        return await response.json();
+        dishes;
     }
 
     async function execute(input) {
@@ -58,7 +57,7 @@
             const dishes = await getDishes(inputList);
             return dishes.join(", ");
         } catch (e) {
-            alert(e);
+            alert(e.message);
             return "";
         }
     }
