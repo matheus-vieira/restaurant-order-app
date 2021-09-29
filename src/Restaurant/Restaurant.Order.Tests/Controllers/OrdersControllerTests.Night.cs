@@ -1,14 +1,13 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Restaurant.Order.Domain;
 using System.Collections.Generic;
 
-namespace Restaurant.Order.Tests.Domain
+namespace Restaurant.Order.Tests.Controllers
 {
     [TestClass]
-    public class NightDishesTests : DishesBaseTests
+    public class OrderControllersTestNight : OrderControllersTestBase
     {
-
-        public NightDishesTests()
+        public OrderControllersTestNight()
             : base(new NightDishes())
         {
         }
@@ -20,7 +19,7 @@ namespace Restaurant.Order.Tests.Domain
             yield return new object[] { new[] { 1, 2, 2, 4 }, new[] { "steak", "potato(x2)", "cake" } };
             yield return new object[] { new[] { 3, 4, 2, 1 }, new[] { "steak", "potato", "wine", "cake" } };
         }
-        [DataTestMethod]
+        [TestMethod]
         [DynamicData(nameof(ValuesToMatch), DynamicDataSourceType.Method)]
         public void CompareInputWithOutput(int[] dishTypes, string[] expected)
         {
