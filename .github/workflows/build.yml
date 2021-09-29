@@ -43,5 +43,9 @@ jobs:
           ASPNETCORE_ENVIRONMENT: Development
         shell: powershell
         run: |
-          dotnet .\src\Restaurant .\.sonar\scanner\dotnet-sonarscanner begin /k:"matheus-vieira_restaurant-order-app" /o:"matheus-vieira" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /s:$GITHUB_WORKSPACE/SonarQube.Analysis.xml
-          dotnet .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"matheus-vieira_restaurant-order-app" /o:"matheus-vieira" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /s:$GITHUB_WORKSPACE/SonarQube.Analysis.xml
+          dotnet test .\src\Restaurant --settings coverlet.runsettings --logger:trx
+          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"matheus-vieira_restaurant-order-app" /o:"matheus-vieira" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
+          dotnet build .\src\Restaurant
+          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
