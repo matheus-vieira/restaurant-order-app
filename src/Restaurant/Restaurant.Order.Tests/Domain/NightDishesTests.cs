@@ -1,13 +1,15 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Restaurant.Order.Domain;
+using System.Linq;
 
 namespace Restaurant.Order.Tests.Domain
 {
     [TestClass]
-    public class MorningDishesTests : DishesBaseTests
+    public class NightDishesTests : DishesBaseTests
     {
-        public MorningDishesTests()
-            : base(new MorningDishes())
+
+        public NightDishesTests()
+            : base(new NightDishes())
         {
         }
 
@@ -15,8 +17,8 @@ namespace Restaurant.Order.Tests.Domain
         public void ShouldReturnAllValidPossibilities()
         {
             // arrange
-            var dishTypes = new[] { 1, 2, 3 };
-            var expected = new[] { "eggs", "toast", "coffee" };
+            var dishTypes = new[] { 1, 2, 3, 4 };
+            var expected = new[] { "steak", "potato", "wine", "cake" };
 
             // act
             // assert
@@ -36,23 +38,11 @@ namespace Restaurant.Order.Tests.Domain
         }
 
         [TestMethod]
-        public void ShouldReturnMultiplesCoffes()
+        public void ShouldReturnMultiplesPotatos()
         {
             // arrange
-            var dishTypes = new[] { 1, 2, 3, 3, 3 };
-            var expected = new[] { "eggs", "toast", "coffee(x3)" };
-
-            // act
-            // assert
-            CheckPossibilities(dishTypes, expected);
-        }
-
-        [TestMethod]
-        public void ShouldReturnWithNoDessert()
-        {
-            // arrange
-            var dishTypes = new[] { 1, 2, 3, 4 };
-            var expected = new[] { "eggs", "toast", "coffee", "error" };
+            var dishTypes = new[] { 1, 2, 2, 4 };
+            var expected = new[] { "steak", "potato(x2)", "cake" };
 
             // act
             // assert
@@ -63,8 +53,8 @@ namespace Restaurant.Order.Tests.Domain
         public void ShouldReturnInTheFollowingOrderEntreeSideDrinkDessert()
         {
             // arrange
-            var dishTypes = new[] { 3, 2, 1 };
-            var expected = new[] { "eggs", "toast", "coffe" };
+            var dishTypes = new[] { 3, 4, 2, 1 };
+            var expected = new[] { "steak", "potato", "wine", "cake" };
 
             // act
             // assert
