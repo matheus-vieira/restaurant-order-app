@@ -1,4 +1,4 @@
-name: Build
+name: Sonar Code Analisys
 on:
   push:
     branches:
