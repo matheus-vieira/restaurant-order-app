@@ -1,5 +1,17 @@
 [![.NET](https://github.com/matheus-vieira/restaurant-order-app/actions/workflows/dotnet.yml/badge.svg)](https://github.com/matheus-vieira/restaurant-order-app/actions/workflows/dotnet.yml)
 [![Build](https://github.com/matheus-vieira/restaurant-order-app/actions/workflows/build.yml/badge.svg)](https://github.com/matheus-vieira/restaurant-order-app/actions/workflows/build.yml)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=matheus-vieira_restaurant-order-app&metric=alert_status)](https://sonarcloud.io/dashboard?id=matheus-vieira_restaurant-order-app)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=matheus-vieira_restaurant-order-app&metric=bugs)](https://sonarcloud.io/dashboard?id=matheus-vieira_restaurant-order-app)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=matheus-vieira_restaurant-order-app&metric=code_smells)](https://sonarcloud.io/dashboard?id=matheus-vieira_restaurant-order-app)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=matheus-vieira_restaurant-order-app&metric=coverage)](https://sonarcloud.io/dashboard?id=matheus-vieira_restaurant-order-app)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=matheus-vieira_restaurant-order-app&metric=sqale_index)](https://sonarcloud.io/dashboard?id=matheus-vieira_restaurant-order-app)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=matheus-vieira_restaurant-order-app&metric=ncloc)](https://sonarcloud.io/dashboard?id=matheus-vieira_restaurant-order-app)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=matheus-vieira_restaurant-order-app&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=matheus-vieira_restaurant-order-app)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=matheus-vieira_restaurant-order-app&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=matheus-vieira_restaurant-order-app)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=matheus-vieira_restaurant-order-app&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=matheus-vieira_restaurant-order-app)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=matheus-vieira_restaurant-order-app&metric=security_rating)](https://sonarcloud.io/dashboard?id=matheus-vieira_restaurant-order-app)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=matheus-vieira_restaurant-order-app&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=matheus-vieira_restaurant-order-app)
+
 
 # Restaurant Order App (technical test)
 
