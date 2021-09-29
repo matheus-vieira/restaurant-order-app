@@ -1,3 +1,5 @@
+[![.NET](https://github.com/matheus-vieira/restaurant-order-app/actions/workflows/dotnet.yml/badge.svg)](https://github.com/matheus-vieira/restaurant-order-app/actions/workflows/dotnet.yml)
+
 # Restaurant Order App (technical test)
 
 ## We are expecting to evaluate follow criteria:
