@@ -43,7 +43,7 @@ namespace Restaurant.Order.Domain
             return AllowedMultiples.Contains(dishType);
         }
 
-        private SortedDictionary<int, int> LoadDishes(int[] dishesTypes)
+        private static SortedDictionary<int, int> LoadDishes(int[] dishesTypes)
         {
             SortedDictionary<int, int> dishes = new();
 

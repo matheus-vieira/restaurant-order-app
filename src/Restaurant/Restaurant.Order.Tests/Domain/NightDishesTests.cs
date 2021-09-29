@@ -1,6 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Restaurant.Order.Domain;
-using System.Linq;
 
 namespace Restaurant.Order.Tests.Domain
 {
