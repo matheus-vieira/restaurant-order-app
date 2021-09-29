@@ -36,6 +36,13 @@ jobs:
         run: |
           New-Item -Path .\.sonar\scanner -ItemType Directory
           dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
+      - name: dotnet test
+        run: |
+          dotnet test .\src\Restaurant --logger trx --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=.\coverage.\ --settings coverlet.runsettings
+      - name: Run Reportgenerator
+        run: |
+          dotnet tool install dotnet-reportgenerator-globaltool --tool-path . 
+        ./reportgenerator "-reports:$(Build.SourcesDirectory)/coverage/coverage.opencover.xml" "-targetdir:coverage/Cobertura" "-reporttypes:Cobertura;HTMLInline;HTMLChart"
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
@@ -43,9 +50,6 @@ jobs:
           ASPNETCORE_ENVIRONMENT: Development
         shell: powershell
         run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"matheus-vieira_restaurant-order-app" /o:"matheus-vieira" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /s:$GITHUB_WORKSPACE/SonarQube.Analysis.xml
-          dotnet test .\src\Restaurant --settings coverlet.runsettings --logger:trx
-          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"matheus-vieira_restaurant-order-app" /o:"matheus-vieira" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
           dotnet build .\src\Restaurant
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
