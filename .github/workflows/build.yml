@@ -42,7 +42,7 @@ jobs:
       - name: Run Report Generator Tool
         run: |
           dotnet tool install dotnet-reportgenerator-globaltool --tool-path .
-          reportgenerator "-reports:**\coverage.opencover.xml" "-targetdir:coverage\Cobertura" "-reporttypes:Cobertura;HTMLInline;HTMLChart"
+          ./reportgenerator "-reports:**\coverage.opencover.xml" "-targetdir:coverage\Cobertura" "-reporttypes:Cobertura;HTMLInline;HTMLChart"
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
@@ -52,4 +52,5 @@ jobs:
         run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"matheus-vieira_restaurant-order-app" /o:"matheus-vieira" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
           dotnet build .\src\Restaurant
+          dotnet test .\src\Restaurant --logger trx --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=.\coverage.\ --settings coverlet.runsettings
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
