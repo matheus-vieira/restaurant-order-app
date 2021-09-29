@@ -14,11 +14,13 @@ namespace Restaurant.Order.Tests.Controllers
         public void ShouldReturnNullOkObjectResult()
         {
             // act
-            var actionResult = _controller.GetMorning(default) as OkObjectResult;
+            var actionResult = _controller.PostMorning(default) as OkObjectResult;
 
             // assert
             Assert.IsNotNull(actionResult);
             Assert.IsNull(actionResult.Value);
         }
+
+        protected override object CallMethod(int[] dishTypes) => default;
     }
 }

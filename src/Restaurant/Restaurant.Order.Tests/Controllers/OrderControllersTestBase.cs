@@ -24,10 +24,12 @@ namespace Restaurant.Order.Tests.Controllers
             _controller = _mocker.CreateInstance<OrdersController>();
         }
 
+        protected abstract object CallMethod(int[] dishTypes);
+
         protected void CheckPossibilities(int[] dishTypes, string[] expected)
         {
             // act
-            var actionResult = _controller.GetMorning(dishTypes) as OkObjectResult;
+            var actionResult = CallMethod(dishTypes) as OkObjectResult;
 
             // assert
             Assert.IsNotNull(actionResult);

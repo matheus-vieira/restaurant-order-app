@@ -17,7 +17,7 @@ namespace Restaurant.Order.Controllers
         /// <response code="404">Not found</response>
         /// <response code="500">Internal Server Error</response>
         [HttpPost, Route("morning/")]
-        public IActionResult GetMorning([FromBody] int[] dyshType)
+        public IActionResult PostMorning([FromBody] int[] dyshType)
         {
             return InternalGetDishes(MorningDishes.Name, dyshType);
         }

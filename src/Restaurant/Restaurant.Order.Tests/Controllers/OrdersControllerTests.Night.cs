@@ -25,5 +25,7 @@ namespace Restaurant.Order.Tests.Controllers
         {
             CheckPossibilities(dishTypes, expected);
         }
+
+        protected override object CallMethod(int[] dishTypes) => _controller.PostNight(dishTypes);
     }
 }
