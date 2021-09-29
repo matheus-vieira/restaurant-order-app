@@ -42,7 +42,7 @@ jobs:
       - name: Run Report Generator Tool
         run: |
           dotnet tool install dotnet-reportgenerator-globaltool --tool-path .
-          ./reportgenerator "-reports:**/coverage.opencover.xml" "-targetdir:coverage/Cobertura" "-reporttypes:Cobertura;HTMLInline;HTMLChart"
+          ./reportgenerator "-reports:**\coverage.opencover.xml" "-targetdir:coverage\Cobertura" "-reporttypes:Cobertura;HTMLInline;HTMLChart"
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
