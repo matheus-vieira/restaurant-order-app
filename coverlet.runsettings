@@ -4,7 +4,7 @@
     <DataCollectors>
       <DataCollector friendlyName="XPlat Code Coverage">
         <Configuration>
-          <Format>opencover</Format>
+          <Format>json,cobertura,lcov,teamcity,opencover</Format>
         </Configuration>
       </DataCollector>
     </DataCollectors>
