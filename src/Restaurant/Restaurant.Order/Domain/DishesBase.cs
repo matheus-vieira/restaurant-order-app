@@ -49,8 +49,6 @@ namespace Restaurant.Order.Domain
 
             for (int i = 0; i < dishesTypes.Length; i++)
             {
-                DishDictionary.TryGetValue(dishesTypes[i], out var dishName);
-
                 dishes.TryGetValue(dishesTypes[i], out var value);
 
                 dishes[dishesTypes[i]] = ++value;
