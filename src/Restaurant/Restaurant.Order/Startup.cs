@@ -40,6 +40,8 @@ namespace Restaurant.Order
 
             app.UseHttpsRedirection();
 
+            app.UseFileServer();
+
             app.UseRouting();
 
             app.UseAuthorization();
